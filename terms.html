@@ -4,40 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service | Review Sniper</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
     
-    <!-- Navbar (same as index.html) -->
     <nav class="flex justify-between items-center max-w-7xl mx-auto px-6 py-6">
         <a href="/" class="flex items-center">
-            <!-- Add your Logo SVG here -->
             <svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="40" height="40" rx="8" fill="#2563EB"/>
-                <circle cx="20" cy="20" r="12" stroke="white" stroke-width="3"/>
+                <circle cx="20" cy="20" r="12" stroke="white" strokeWidth="3"/>
                 <circle cx="20" cy="20" r="5" fill="white"/>
-                <text x="52" y="26" font-family="'Inter', sans-serif" font-size="20" fill="#64748B" font-weight="500">review</text>
-                <text x="115" y="26" font-family="'Inter', sans-serif" font-size="20" fill="#0F172A" font-weight="800">SNIPER</text>
+                <text x="52" y="26" fontFamily="'Inter', sans-serif" fontSize="20" fill="#64748B" fontWeight="500">review</text>
+                <text x="115" y="26" fontFamily="'Inter', sans-serif" fontSize="20" fill="#0F172A" fontWeight="800">SNIPER</text>
             </svg>
         </a>
         <div>
-            <a href="/" class="text-slate-600 font-medium text-sm hover:text-blue-600">← Back to Home</a>
+            <a href="/" class="text-slate-600 font-medium text-sm hover:text-blue-600 transition-colors">← Back to Home</a>
         </div>
     </nav>
 
-    <!-- Content -->
     <main class="max-w-4xl mx-auto px-6 py-16">
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">Terms of Service</h1>
-        <p class="text-slate-500 mb-8">Last updated: November 20, 2025</p>
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Terms of Service</h1>
+            <p class="text-slate-500">Last updated: November 21, 2025</p>
+        </header>
         
-        <div class="prose prose-slate max-w-none">
-        <div class="section-wrapper">
-    <div class="wrap">
-        <div class="terms-content">
+        <div class="prose prose-slate max-w-none mx-auto">
             
             <h2>1. Agreement to Terms</h2>
             <p>These Terms of Service ("Terms") govern your access to and use of Boxford Partners LLC's ("Boxford Partners," "we," "us," or "our") consulting services, software products, and related offerings. By engaging our services or using our products, you ("Client," "you," or "your") agree to be bound by these Terms.</p>
@@ -98,8 +94,9 @@
                 <li>Provide accurate and complete information</li>
                 <li>Review and approve deliverables in a timely manner</li>
             </ul>
-            <div class="warning-box">
-                <p><strong>Important:</strong> Delays caused by failure to meet these responsibilities may result in timeline extensions and additional fees.</p>
+            
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 my-8 not-prose rounded-r-lg">
+                <p class="text-amber-900 m-0"><strong>Important:</strong> Delays caused by failure to meet these responsibilities may result in timeline extensions and additional fees.</p>
             </div>
 
             <h2>4. Fees and Payment</h2>
@@ -212,252 +209,4 @@
                 <li>Is or becomes publicly available through no breach of these Terms</li>
                 <li>Was rightfully known prior to disclosure</li>
                 <li>Is independently developed without use of Confidential Information</li>
-                <li>Is required to be disclosed by law (with prompt notice to the disclosing party)</li>
-            </ul>
-
-            <h3>7.4 Data Security</h3>
-            <p>We implement reasonable administrative, technical, and physical safeguards to protect your data. However, no security system is impenetrable, and we cannot guarantee absolute security.</p>
-
-            <h2>8. Warranties and Disclaimers</h2>
-            
-            <h3>8.1 Our Warranties</h3>
-            <p>We warrant that:</p>
-            <ul>
-                <li>Services will be performed in a professional and workmanlike manner</li>
-                <li>We have the right to provide the services and software</li>
-                <li>Services will materially conform to specifications in the applicable SOW</li>
-            </ul>
-            <p>Your sole remedy for breach of these warranties is re-performance of the deficient services at no additional cost.</p>
-
-            <h3>8.2 DISCLAIMER</h3>
-            <div class="warning-box">
-                <p><strong>EXCEPT AS EXPRESSLY PROVIDED IN SECTION 8.1, ALL SERVICES AND SOFTWARE ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</strong></p>
-                <p><strong>WE DO NOT WARRANT THAT:</strong></p>
-                <ul>
-                    <li>Services or software will be uninterrupted, error-free, or secure</li>
-                    <li>Results obtained will meet your requirements</li>
-                    <li>Defects will be corrected</li>
-                    <li>Third-party integrations will remain functional</li>
-                </ul>
-            </div>
-
-            <h3>8.3 Third-Party Services</h3>
-            <p>We are not responsible for the performance, availability, or changes to third-party platforms (e.g., Monday.com, HubSpot, Salesforce). We will make reasonable efforts to maintain compatibility but cannot guarantee functionality if third parties modify their systems.</p>
-
-            <h2>9. Limitation of Liability</h2>
-            
-            <h3>9.1 Limitation of Direct Damages</h3>
-            <div class="warning-box">
-                <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR TOTAL LIABILITY ARISING OUT OF OR RELATED TO THESE TERMS SHALL NOT EXCEED THE AMOUNTS PAID BY YOU TO US IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO LIABILITY.</strong></p>
-            </div>
-
-            <h3>9.2 Exclusion of Consequential Damages</h3>
-            <div class="warning-box">
-                <p><strong>IN NO EVENT SHALL WE BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</strong></p>
-                <ul>
-                    <li>Loss of profits, revenue, or business opportunities</li>
-                    <li>Loss of data or cost of procurement of substitute services</li>
-                    <li>Business interruption</li>
-                    <li>Loss of goodwill or reputation</li>
-                </ul>
-                <p><strong>This limitation applies regardless of the legal theory (contract, tort, negligence, strict liability, or otherwise) and even if we have been advised of the possibility of such damages.</strong></p>
-            </div>
-
-            <h3>9.3 Exceptions</h3>
-            <p>These limitations do not apply to:</p>
-            <ul>
-                <li>Your breach of intellectual property rights</li>
-                <li>Your breach of confidentiality obligations</li>
-                <li>Your violation of applicable laws</li>
-                <li>Liability that cannot be excluded under applicable law</li>
-            </ul>
-
-            <h2>10. Indemnification</h2>
-            
-            <h3>10.1 Your Indemnification</h3>
-            <p>You agree to indemnify, defend, and hold harmless Boxford Partners, its affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including reasonable attorneys' fees) arising from:</p>
-            <ul>
-                <li>Your use of our services or software in violation of these Terms</li>
-                <li>Your violation of any law or regulation</li>
-                <li>Infringement of third-party rights by your content or materials</li>
-                <li>Negligence or willful misconduct</li>
-            </ul>
-
-            <h3>10.2 Our Indemnification</h3>
-            <p>We agree to indemnify you from third-party claims that our services or software infringe a valid U.S. patent, copyright, or trademark, provided you:</p>
-            <ul>
-                <li>Promptly notify us in writing of the claim</li>
-                <li>Grant us sole control of the defense and settlement</li>
-                <li>Provide reasonable cooperation in the defense</li>
-            </ul>
-            <p>Our obligations do not apply to infringement arising from:</p>
-            <ul>
-                <li>Modification of our services or software</li>
-                <li>Use in combination with third-party products</li>
-                <li>Use after we notified you to stop due to infringement concerns</li>
-                <li>Your specifications or requirements</li>
-            </ul>
-
-            <h2>11. Term and Termination</h2>
-            
-            <h3>11.1 Term</h3>
-            <p>These Terms begin when you first engage our services or use our software and continue until terminated as provided herein.</p>
-
-            <h3>11.2 Termination for Convenience</h3>
-            <p>Either party may terminate an ongoing engagement or software subscription with 30 days' written notice. You remain responsible for payment of all work performed through the termination date.</p>
-
-            <h3>11.3 Termination for Cause</h3>
-            <p>Either party may terminate immediately if:</p>
-            <ul>
-                <li>The other party materially breaches these Terms and fails to cure within 15 days of written notice</li>
-                <li>The other party becomes insolvent, files for bankruptcy, or ceases business operations</li>
-            </ul>
-
-            <h3>11.4 Effect of Termination</h3>
-            <p>Upon termination:</p>
-            <ul>
-                <li>You must pay all outstanding fees for services rendered and software used</li>
-                <li>We will provide you with all deliverables completed as of the termination date</li>
-                <li>Your license to use our software terminates immediately (except for perpetual licenses)</li>
-                <li>We will return or destroy your Confidential Information upon request</li>
-                <li>Sections 5, 7, 8, 9, 10, and 12 survive termination</li>
-            </ul>
-
-            <h3>11.5 Transition Assistance</h3>
-            <p>Upon request and for additional fees, we will provide reasonable transition assistance for up to 30 days after termination to help you migrate to alternative solutions.</p>
-
-            <h2>12. General Provisions</h2>
-            
-            <h3>12.1 Entire Agreement</h3>
-            <p>These Terms, together with any SOWs and license agreements, constitute the entire agreement between the parties and supersede all prior understandings and agreements, whether written or oral.</p>
-
-            <h3>12.2 Amendments</h3>
-            <p>We may modify these Terms by providing 30 days' notice via email or by posting updated Terms on our website. Continued use of services after the effective date constitutes acceptance of the modified Terms. Material changes to SOWs require written agreement from both parties.</p>
-
-            <h3>12.3 Assignment</h3>
-            <p>You may not assign or transfer these Terms or any SOW without our prior written consent. We may assign these Terms to any affiliate or in connection with a merger, acquisition, or sale of assets with notice to you.</p>
-
-            <h3>12.4 Independent Contractors</h3>
-            <p>The parties are independent contractors. Nothing in these Terms creates a partnership, joint venture, agency, or employment relationship. Neither party has authority to bind the other.</p>
-
-            <h3>12.5 Force Majeure</h3>
-            <p>Neither party shall be liable for failure to perform due to circumstances beyond its reasonable control, including natural disasters, war, terrorism, labor disputes, government actions, or internet/telecommunications failures. Performance will be suspended during the force majeure event and extended by a reasonable period.</p>
-
-            <h3>12.6 Notices</h3>
-            <p>All notices must be in writing and sent to:</p>
-            <div class="highlight-box">
-                <p><strong>Boxford Partners:</strong><br>
-                Boxford Partners LLC<br>
-                345 California Street, Suite 600<br>
-                San Francisco, CA 94104<br>
-                Email: hello@boxfordpartners.com</p>
-                <p><strong>Client:</strong><br>
-                To the address provided in the applicable SOW or account registration.</p>
-            </div>
-            <p>Notices are deemed received upon delivery if sent via overnight courier, or three business days after mailing if sent via certified mail.</p>
-
-            <h3>12.7 Governing Law and Jurisdiction</h3>
-            <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions.</p>
-            <p>Any dispute arising from these Terms shall be resolved exclusively in the state or federal courts located in San Francisco County, California. Each party consents to the personal jurisdiction of such courts.</p>
-
-            <h3>12.8 Dispute Resolution</h3>
-            <p>Before filing any lawsuit, the parties agree to attempt good faith negotiations for at least 30 days. If negotiations fail, either party may pursue litigation as provided in Section 12.7.</p>
-
-            <h3>12.9 Waiver</h3>
-            <p>Failure to enforce any provision of these Terms does not constitute a waiver of that provision or any other provision. Any waiver must be in writing and signed by the waiving party.</p>
-
-            <h3>12.10 Severability</h3>
-            <p>If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.</p>
-
-            <h3>12.11 Headings</h3>
-            <p>Section headings are for convenience only and do not affect interpretation of these Terms.</p>
-
-            <h3>12.12 Counterparts</h3>
-            <p>These Terms and any SOWs may be executed in counterparts, each of which shall be deemed an original and all of which together shall constitute one agreement. Electronic signatures shall have the same force and effect as original signatures.</p>
-
-            <h2>13. Compliance and Regulatory</h2>
-            
-            <h3>13.1 GDPR Compliance</h3>
-            <p>For clients subject to the General Data Protection Regulation (GDPR), we will execute a separate Data Processing Agreement addressing data protection requirements.</p>
-
-            <h3>13.2 Data Protection</h3>
-            <p>We comply with applicable data protection laws and maintain commercially reasonable security measures. You are responsible for ensuring your use of our services complies with laws applicable to you.</p>
-
-            <h3>13.3 Export Controls</h3>
-            <p>You may not use our services or software in violation of U.S. export laws and regulations. You represent that you are not located in, under control of, or a national or resident of any restricted country.</p>
-
-            <div class="contact-box">
-                <h3>14. Contact Information</h3>
-                <p>For questions about these Terms, please contact:</p>
-                <p><strong>ReviewSniper</strong><br>
-                Email: <a href="mailto:hello@reviewsniper.app">hello@reviewsniper.app</a><br>
-                Website: <a href="https://reviewsniper.app">reviewsniper.app</a></p>
-            </div>
-
-            <div class="highlight-box" style="margin-top: 48px; text-align: center;">
-                <p><strong>By engaging our services or using our software, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</strong></p>
-            </div>
-
-            <p style="text-align: center; color: var(--muted); margin-top: 24px; font-size: 14px;">Last Updated: November 21, 2025</p>
-
-        </div>
-    </div>
-</div><!-- PASTE YOUR TERMS OF SERVICE CONTENT HERE -->
-           <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service | Review Sniper</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-900">
-    
-    <!-- Navbar (same as index.html) -->
-    <nav class="flex justify-between items-center max-w-7xl mx-auto px-6 py-6">
-        <a href="/" class="flex items-center">
-            <!-- Add your Logo SVG here -->
-            <svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="8" fill="#2563EB"/>
-                <circle cx="20" cy="20" r="12" stroke="white" stroke-width="3"/>
-                <circle cx="20" cy="20" r="5" fill="white"/>
-                <text x="52" y="26" font-family="'Inter', sans-serif" font-size="20" fill="#64748B" font-weight="500">review</text>
-                <text x="115" y="26" font-family="'Inter', sans-serif" font-size="20" fill="#0F172A" font-weight="800">SNIPER</text>
-            </svg>
-        </a>
-        <div>
-            <a href="/" class="text-slate-600 font-medium text-sm hover:text-blue-600">← Back to Home</a>
-        </div>
-    </nav>
-
-    <!-- Content -->
-    <main class="max-w-4xl mx-auto px-6 py-16">
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">Terms of Service</h1>
-        <p class="text-slate-500 mb-8">Last updated: November 20, 2025</p>
-        
-        <div class="prose prose-slate max-w-none">
-            <!-- PASTE YOUR TERMS OF SERVICE CONTENT HERE -->
-            <!-- Copy from Boxford Partners site -->
-        </div>
-    </main>
-
-    <!-- Footer (same as index.html) -->
-    <footer class="bg-slate-50 border-t border-slate-200 py-12 px-6 mt-20">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-slate-500 text-sm">
-                © 2025 Boxford Partners LLC. All rights reserved.
-            </div>
-            <div class="flex gap-6 text-sm text-slate-600">
-                <a href="/privacy.html" class="hover:text-slate-900">Privacy</a>
-                <a href="/terms.html" class="hover:text-slate-900">Terms</a>
-                <a href="mailto:support@reviewsniper.app" class="hover:text-slate-900">Support</a>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+                <li>Is required to be disclosed by law (with prompt notice to the disclosing party
