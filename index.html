@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@auth0/auth0-spa-js@2.1.3/dist/auth0-spa-js.production.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
@@ -28,6 +29,22 @@
         const Zap = () => React.createElement("svg", { className: "w-6 h-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M13 10V3L4 14h7v7l9-11h-7z" }));
         const Mic = () => React.createElement("svg", { className: "w-6 h-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" }));
         const Logo = () => React.createElement("svg", { width: "200", height: "40", viewBox: "0 0 200 40", fill: "none", xmlns: "http://www.w3.org/2000/svg" }, React.createElement("rect", { width: "40", height: "40", rx: "8", fill: "#2563EB" }), React.createElement("circle", { cx: "20", cy: "20", r: "12", stroke: "white", strokeWidth: "3" }), React.createElement("circle", { cx: "20", cy: "20", r: "5", fill: "white" }), React.createElement("text", { x: "52", y: "26", fontFamily: "'Inter', sans-serif", fontSize: "20", fill: "#64748B", fontWeight: "500" }, "review"), React.createElement("text", { x: "115", y: "26", fontFamily: "'Inter', sans-serif", fontSize: "20", fill: "#0F172A", fontWeight: "800" }, "SNIPER"));
+
+        // --- NEW: SUCCESS MODAL ---
+        const SuccessModal = ({ onClose }) => React.createElement("div", { className: "fixed inset-0 z-50 flex items-center justify-center px-4" },
+            React.createElement("div", { className: "absolute inset-0 bg-black/50 backdrop-blur-sm", onClick: onClose }),
+            React.createElement("div", { className: "bg-white rounded-3xl p-8 max-w-md w-full relative z-10 shadow-2xl animate-fade-in text-center" },
+                React.createElement("div", { className: "w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6" },
+                    React.createElement(Check, { className: "w-8 h-8" })
+                ),
+                React.createElement("h2", { className: "text-2xl font-bold text-slate-900 mb-2" }, "Payment Successful!"),
+                React.createElement("p", { className: "text-slate-500 mb-8" }, "Welcome to Review Sniper. Check your email for your receipt and getting started guide."),
+                React.createElement("button", {
+                    onClick: onClose,
+                    className: "w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition-colors"
+                }, "Continue to Dashboard")
+            )
+        );
 
         // --- NAVBAR ---
         const Navbar = ({ isAuthenticated, user, loginWithRedirect, logout }) => React.createElement("nav", { className: "flex justify-between items-center max-w-7xl mx-auto px-6 py-6 z-50 relative" }, 
@@ -115,7 +132,7 @@
             const [isAnnual, setIsAnnual] = useState(false);
             const [isLoading, setIsLoading] = useState(false);
 
-            // New: Handle Checkout
+            // Handle Checkout
             const handleCheckout = async (priceId) => {
                 setIsLoading(true);
                 try {
@@ -134,9 +151,9 @@
                 }
             };
 
-            // PLACEHOLDER PRICE IDS - REPLACE THESE WITH YOUR ACTUAL STRIPE PRICE IDs
-            const LITE_PRICE_ID = "price_1SViHmPMgoNPfrjAY7iTS6E7";
-            const PRO_PRICE_ID = "price_1SViIvPMgoNPfrjAiMWav2fk";
+            // PLACEHOLDER PRICE IDS - ENSURE THESE MATCH YOUR PREVIOUS EDIT
+            const LITE_PRICE_ID = "price_1Qxxxxxxxxxxxxxxxxx";
+            const PRO_PRICE_ID = "price_1Qyyyyyyyyyyyyyyyyy";
 
             return React.createElement("section", { id: "pricing", className: "py-20 px-6 bg-white" },
                 React.createElement("div", { className: "max-w-5xl mx-auto" },
@@ -213,14 +230,26 @@
         // --- FOOTER ---
         const Footer = () => React.createElement("footer", { className: "bg-slate-50 border-t border-slate-200 py-12 px-6" }, React.createElement("div", { className: "max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6" }, React.createElement("div", { className: "flex items-center" }, React.createElement(Logo, null)), React.createElement("div", { className: "text-slate-500 text-sm" }, "\u00A9 2025 Boxford Partners. All rights reserved."), React.createElement("div", { className: "flex gap-6 text-sm text-slate-600" }, React.createElement("a", { href: "/privacy.html", className: "hover:text-slate-900" }, "Privacy"), React.createElement("a", { href: "/terms.html", className: "hover:text-slate-900" }, "Terms & Conditions"), React.createElement("a", { href: "mailto:support@reviewsniper.app", className: "hover:text-slate-900" }, "Support"))));
 
-        // --- MAIN APP ---
+        // --- MAIN APP (UPDATED TO SHOW MODAL) ---
         const App = () => {
             const [auth0Client, setAuth0Client] = useState(null);
             const [isAuthenticated, setIsAuthenticated] = useState(false);
             const [user, setUser] = useState(null);
             const [isLoading, setIsLoading] = useState(true);
+            const [showSuccess, setShowSuccess] = useState(false);
 
             useEffect(() => {
+                // Check for Stripe success in URL
+                const query = new URLSearchParams(window.location.search);
+                if (query.get('success')) {
+                    setShowSuccess(true);
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                    }
+                    // Remove the 'success' param from the URL without reloading
+                    window.history.replaceState({}, document.title, "/");
+                }
+
                 const initAuth0 = async () => {
                     const client = await auth0.createAuth0Client({
                         domain: "dev-spfyirobhkaeiat2.us.auth0.com",
@@ -252,7 +281,15 @@
                 return React.createElement("div", { className: "flex h-screen items-center justify-center bg-slate-50" }, React.createElement("div", { className: "w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" }));
             }
 
-            return React.createElement("div", null, React.createElement(Navbar, { isAuthenticated: isAuthenticated, user: user, loginWithRedirect: loginWithRedirect, logout: logout }), React.createElement(Hero, null), React.createElement(FeatureSplit, null), React.createElement(HowItWorks, null), React.createElement(Pricing, null), React.createElement(Footer, null));
+            return React.createElement("div", null, 
+                React.createElement(Navbar, { isAuthenticated: isAuthenticated, user: user, loginWithRedirect: loginWithRedirect, logout: logout }), 
+                React.createElement(Hero, null), 
+                React.createElement(FeatureSplit, null), 
+                React.createElement(HowItWorks, null), 
+                React.createElement(Pricing, null), 
+                React.createElement(Footer, null),
+                showSuccess && React.createElement(SuccessModal, { onClose: () => setShowSuccess(false) })
+            );
         };
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
