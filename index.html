@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,9 +30,28 @@
         const Logo = () => React.createElement("svg", { width: "200", height: "40", viewBox: "0 0 200 40", fill: "none", xmlns: "http://www.w3.org/2000/svg" }, React.createElement("rect", { width: "40", height: "40", rx: "8", fill: "#2563EB" }), React.createElement("circle", { cx: "20", cy: "20", r: "12", stroke: "white", strokeWidth: "3" }), React.createElement("circle", { cx: "20", cy: "20", r: "5", fill: "white" }), React.createElement("text", { x: "52", y: "26", fontFamily: "'Inter', sans-serif", fontSize: "20", fill: "#64748B", fontWeight: "500" }, "review"), React.createElement("text", { x: "115", y: "26", fontFamily: "'Inter', sans-serif", fontSize: "20", fill: "#0F172A", fontWeight: "800" }, "SNIPER"));
 
         // --- NAVBAR ---
-        const Navbar = ({ isAuthenticated, user, loginWithRedirect, logout }) => React.createElement("nav", { className: "flex justify-between items-center max-w-7xl mx-auto px-6 py-6 z-50 relative" }, React.createElement("a", { href: "/", className: "flex items-center" }, React.createElement(Logo, null)), React.createElement("div", { className: "hidden md:flex items-center gap-8 font-medium text-sm text-slate-600" }, React.createElement("a", { href: "#features", className: "hover:text-blue-600 transition-colors" }, "Features"), React.createElement("a", { href: "#how-it-works", className: "hover:text-blue-600 transition-colors" }, "How it Works"), React.createElement("a", { href: "#pricing", className: "hover:text-blue-600 transition-colors" }, "Pricing")), React.createElement("div", { className: "flex gap-4 items-center" }, isAuthenticated && user ? React.createElement(React.Fragment, null, React.createElement("span", { className: "text-sm text-slate-600 hidden md:block truncate max-w-[150px]" }, "Hi, ", user.given_name || user.name), React.createElement("button", { onClick: () => logout({ logoutParams: { returnTo: window.location.origin } }), className: "text-slate-600 font-medium text-sm py-2 hover:text-blue-600" }, "Log Out"), React.createElement("a", { href: "https://app.reviewsniper.app/dashboard", className: "bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-lg shadow-slate-200" }, "Dashboard")) : React.createElement(React.Fragment, null, React.createElement("button", { onClick: () => loginWithRedirect(), className: "text-slate-600 font-medium text-sm py-2 hover:text-blue-600" }, "Client Login"), React.createElement("a", { href: "#pricing", className: "bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-lg shadow-slate-200" }, "Get Started"))));
+        const Navbar = ({ isAuthenticated, user, loginWithRedirect, logout }) => React.createElement("nav", { className: "flex justify-between items-center max-w-7xl mx-auto px-6 py-6 z-50 relative" }, 
+            React.createElement("a", { href: "/", className: "flex items-center" }, React.createElement(Logo, null)), 
+            React.createElement("div", { className: "hidden md:flex items-center gap-8 font-medium text-sm text-slate-600" }, 
+                React.createElement("a", { href: "#features", className: "hover:text-blue-600 transition-colors" }, "Features"), 
+                React.createElement("a", { href: "#how-it-works", className: "hover:text-blue-600 transition-colors" }, "How it Works"), 
+                React.createElement("a", { href: "#pricing", className: "hover:text-blue-600 transition-colors" }, "Pricing")
+            ), 
+            React.createElement("div", { className: "flex gap-4 items-center" }, 
+                isAuthenticated && user ? 
+                React.createElement(React.Fragment, null, 
+                    React.createElement("span", { className: "text-sm text-slate-600 hidden md:block truncate max-w-[150px]" }, "Hi, ", user.given_name || user.name), 
+                    React.createElement("button", { onClick: () => logout({ logoutParams: { returnTo: window.location.origin } }), className: "text-slate-600 font-medium text-sm py-2 hover:text-blue-600" }, "Log Out"), 
+                    React.createElement("a", { href: "https://app.reviewsniper.app/dashboard", className: "bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-lg shadow-slate-200" }, "Dashboard")
+                ) : 
+                React.createElement(React.Fragment, null, 
+                    React.createElement("button", { onClick: () => loginWithRedirect(), className: "text-slate-600 font-medium text-sm py-2 hover:text-blue-600" }, "Client Login"), 
+                    React.createElement("a", { href: "#pricing", className: "bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-lg shadow-slate-200" }, "Get Started")
+                )
+            )
+        );
 
-        // --- HERO (UPDATED WITH EXACT FILENAMES FROM SCREENSHOT) ---
+        // --- HERO ---
         const Hero = () => React.createElement("section", { className: "pt-20 pb-32 px-6 relative overflow-hidden" }, 
             React.createElement("div", { className: "absolute top-0 left-1/2 -translate-x-1/2 w-full h-full hero-glow pointer-events-none" }), 
             React.createElement("div", { className: "max-w-4xl mx-auto text-center relative z-10" }, 
@@ -50,7 +69,6 @@
                     )
                 ), 
                 React.createElement("div", { className: "mt-12 flex items-center justify-center gap-8 opacity-60 grayscale" }, 
-                    // Exact filenames from your repository root
                     React.createElement("img", { src: "/googlelogo2.svg", alt: "Google", className: "h-8 w-auto" }),
                     React.createElement("img", { src: "/yelplogo.svg", alt: "Yelp", className: "h-8 w-auto" }),
                     React.createElement("img", { src: "/facebooklogo2.svg", alt: "Facebook", className: "h-8 w-auto" }),
@@ -95,6 +113,31 @@
         // --- PRICING ---
         const Pricing = () => {
             const [isAnnual, setIsAnnual] = useState(false);
+            const [isLoading, setIsLoading] = useState(false);
+
+            // New: Handle Checkout
+            const handleCheckout = async (priceId) => {
+                setIsLoading(true);
+                try {
+                    const response = await fetch('/api/checkout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ priceId })
+                    });
+                    const data = await response.json();
+                    if (data.url) window.location.href = data.url;
+                    else alert('Checkout Error: ' + (data.error || 'Unknown error'));
+                } catch (e) {
+                    alert('Failed to start checkout: ' + e.message);
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+
+            // PLACEHOLDER PRICE IDS - REPLACE THESE WITH YOUR ACTUAL STRIPE PRICE IDs
+            const LITE_PRICE_ID = "price_1SViHmPMgoNPfrjAY7iTS6E7";
+            const PRO_PRICE_ID = "price_1SViIvPMgoNPfrjAiMWav2fk";
+
             return React.createElement("section", { id: "pricing", className: "py-20 px-6 bg-white" },
                 React.createElement("div", { className: "max-w-5xl mx-auto" },
                     React.createElement("div", { className: "text-center mb-10" },
@@ -115,6 +158,7 @@
                         React.createElement("span", { className: "ml-2 inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800" }, "Save 20%")
                     ),
                     React.createElement("div", { className: "grid md:grid-cols-2 gap-8 max-w-4xl mx-auto" },
+                        // LITE TIER
                         React.createElement("div", { className: "bg-white p-8 rounded-3xl border border-slate-200 hover:shadow-xl transition-shadow" },
                             React.createElement("h3", { className: "text-xl font-bold text-slate-900" }, "Lite"),
                             React.createElement("p", { className: "text-slate-500 text-sm mb-6" }, "Perfect for volume-based businesses."),
@@ -123,10 +167,11 @@
                                 React.createElement("span", { className: "text-slate-500" }, "/mo")
                             ),
                             isAnnual && React.createElement("p", { className: "text-slate-500 text-sm mb-6" }, "Billed annually ($948/yr)"),
-                            React.createElement("a", {
-                                href: "https://app.reviewsniper.app/signup/lite",
-                                className: "block w-full bg-blue-50 text-blue-700 font-bold py-3 rounded-xl text-center hover:bg-blue-100 transition-colors mb-8"
-                            }, "Get Started"),
+                            React.createElement("button", {
+                                onClick: () => handleCheckout(LITE_PRICE_ID),
+                                disabled: isLoading,
+                                className: "block w-full bg-blue-50 text-blue-700 font-bold py-3 rounded-xl text-center hover:bg-blue-100 transition-colors mb-8 disabled:opacity-50"
+                            }, isLoading ? "Loading..." : "Get Started"),
                             React.createElement("ul", { className: "space-y-4" },
                                 React.createElement("li", { className: "flex gap-3 text-sm text-slate-600" }, React.createElement(Check, null), " Unlimited SMS Requests"),
                                 React.createElement("li", { className: "flex gap-3 text-sm text-slate-600" }, React.createElement(Check, null), " Intercept & Improve Negative Feedback"),
@@ -134,6 +179,7 @@
                                 React.createElement("li", { className: "flex gap-3 text-sm text-slate-600" }, React.createElement(Check, null), " Google & Yelp Integration")
                             )
                         ),
+                        // PRO TIER
                         React.createElement("div", { className: "bg-slate-900 p-8 rounded-3xl border border-slate-800 text-white relative overflow-hidden" },
                             React.createElement("div", { className: "absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl" }, "MOST POPULAR"),
                             React.createElement("h3", { className: "text-xl font-bold" }, "Pro"),
@@ -143,10 +189,11 @@
                                 React.createElement("span", { className: "text-slate-400" }, "/mo")
                             ),
                             isAnnual && React.createElement("p", { className: "text-slate-400 text-sm mb-6" }, "Billed annually ($2,868/yr)"),
-                            React.createElement("a", {
-                                href: "https://app.reviewsniper.app/signup/pro",
-                                className: "block w-full bg-blue-600 text-white font-bold py-3 rounded-xl text-center hover:bg-blue-700 transition-colors mb-8 shadow-lg shadow-blue-900/50"
-                            }, "Get Started"),
+                            React.createElement("button", {
+                                onClick: () => handleCheckout(PRO_PRICE_ID),
+                                disabled: isLoading,
+                                className: "block w-full bg-blue-600 text-white font-bold py-3 rounded-xl text-center hover:bg-blue-700 transition-colors mb-8 shadow-lg shadow-blue-900/50 disabled:opacity-50"
+                            }, isLoading ? "Loading..." : "Get Started"),
                             React.createElement("ul", { className: "space-y-4" },
                                 React.createElement("li", { className: "flex gap-3 text-sm text-slate-300" }, React.createElement(Check, null), " ", React.createElement("strong", null, "Everything in Lite")),
                                 React.createElement("li", { className: "flex gap-3 text-sm text-slate-300" }, React.createElement(Check, null), " Voice AI Agent"),
