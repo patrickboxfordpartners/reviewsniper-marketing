@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +32,7 @@
         // --- NAVBAR ---
         const Navbar = ({ isAuthenticated, user, loginWithRedirect, logout }) => React.createElement("nav", { className: "flex justify-between items-center max-w-7xl mx-auto px-6 py-6 z-50 relative" }, React.createElement("a", { href: "/", className: "flex items-center" }, React.createElement(Logo, null)), React.createElement("div", { className: "hidden md:flex items-center gap-8 font-medium text-sm text-slate-600" }, React.createElement("a", { href: "#features", className: "hover:text-blue-600 transition-colors" }, "Features"), React.createElement("a", { href: "#how-it-works", className: "hover:text-blue-600 transition-colors" }, "How it Works"), React.createElement("a", { href: "#pricing", className: "hover:text-blue-600 transition-colors" }, "Pricing")), React.createElement("div", { className: "flex gap-4 items-center" }, isAuthenticated && user ? React.createElement(React.Fragment, null, React.createElement("span", { className: "text-sm text-slate-600 hidden md:block truncate max-w-[150px]" }, "Hi, ", user.given_name || user.name), React.createElement("button", { onClick: () => logout({ logoutParams: { returnTo: window.location.origin } }), className: "text-slate-600 font-medium text-sm py-2 hover:text-blue-600" }, "Log Out"), React.createElement("a", { href: "https://app.reviewsniper.app/dashboard", className: "bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-lg shadow-slate-200" }, "Dashboard")) : React.createElement(React.Fragment, null, React.createElement("button", { onClick: () => loginWithRedirect(), className: "text-slate-600 font-medium text-sm py-2 hover:text-blue-600" }, "Client Login"), React.createElement("a", { href: "#pricing", className: "bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-lg shadow-slate-200" }, "Get Started"))));
 
-        // --- HERO (UPDATED WITH IMAGE LINKS) ---
+        // --- HERO (UPDATED WITH EXACT FILENAMES FROM SCREENSHOT) ---
         const Hero = () => React.createElement("section", { className: "pt-20 pb-32 px-6 relative overflow-hidden" }, 
             React.createElement("div", { className: "absolute top-0 left-1/2 -translate-x-1/2 w-full h-full hero-glow pointer-events-none" }), 
             React.createElement("div", { className: "max-w-4xl mx-auto text-center relative z-10" }, 
@@ -50,7 +50,7 @@
                     )
                 ), 
                 React.createElement("div", { className: "mt-12 flex items-center justify-center gap-8 opacity-60 grayscale" }, 
-                    // Loading images from root (Case sensitive based on your screenshot)
+                    // Exact filenames from your repository root
                     React.createElement("img", { src: "/googlelogo2.svg", alt: "Google", className: "h-8 w-auto" }),
                     React.createElement("img", { src: "/yelplogo.svg", alt: "Yelp", className: "h-8 w-auto" }),
                     React.createElement("img", { src: "/facebooklogo2.svg", alt: "Facebook", className: "h-8 w-auto" }),
